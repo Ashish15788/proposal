@@ -1049,19 +1049,19 @@
             function floatRandomly() {
                 if (!isFloating || rejectCount < 3) return;
                 
-                const gameContainer = document.querySelector('.game-container');
-                const containerRect = gameContainer.getBoundingClientRect();
+                const dialogBox = document.querySelector('.dialogue-box');
+                const dialogRect = dialogBox.getBoundingClientRect();
                 const btnRect = noBtn.getBoundingClientRect();
                 
-                // Make button float within the game container
-                const padding = 20;
-                const maxX = containerRect.width - btnRect.width - padding;
-                const maxY = containerRect.height - btnRect.height - padding;
+                // Make button float within the dialog box
+                const padding = 10;
+                const maxX = dialogRect.width - btnRect.width - padding * 2;
+                const maxY = dialogRect.height - btnRect.height - padding * 2;
                 
                 const newX = Math.random() * maxX + padding;
                 const newY = Math.random() * maxY + padding;
                 
-                noBtn.style.position = 'fixed';
+                noBtn.style.position = 'absolute';
                 noBtn.style.left = (containerRect.left + newX) + 'px';
                 noBtn.style.top = (containerRect.top + newY) + 'px';
                 noBtn.style.transition = 'left 0.4s ease-out, top 0.4s ease-out';
@@ -1074,8 +1074,8 @@
             function dodgeInteraction(e) {
                 if (rejectCount >= 3) {
                     e.preventDefault();
-                    const gameContainer = document.querySelector('.game-container');
-                    const containerRect = gameContainer.getBoundingClientRect();
+                    const dialogBox = document.querySelector('.dialogue-box');
+                    const dialogRect = dialogBox.getBoundingClientRect();
                     const btnRect = noBtn.getBoundingClientRect();
                     
                     // Get interaction position (mouse or touch)
@@ -1095,13 +1095,14 @@
                     
                     // Move in opposite direction
                     const angle = Math.atan2(interactionY - btnCenterY, interactionX - btnCenterX);
-                    const distance = 150;
+                    const distance = 100;
                     let newX = btnRect.left - Math.cos(angle) * distance;
                     let newY = btnRect.top - Math.sin(angle) * distance;
                     
-                    // Keep button within game container bounds
-                    newX = Math.max(containerRect.left + 20, Math.min(newX, containerRect.right - btnRect.width - 20));
-                    newY = Math.max(containerRect.top + 20, Math.min(newY, containerRect.bottom - btnRect.height - 20));
+                    // Keep button within dialog box bounds
+                    const padding = 10;
+                    newX = Math.max(dialogRect.left + padding, Math.min(newX, dialogRect.right - btnRect.width - padding));
+                    newY = Math.max(dialogRect.top + padding, Math.min(newY, dialogRect.bottom - btnRect.height - padding));
                     
                     noBtn.style.left = newX + 'px';
                     noBtn.style.top = newY + 'px';
