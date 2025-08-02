@@ -24,99 +24,284 @@
         }
         
         .game-container {
-            width: 800px;
-            height: 600px;
+            width: 900px;
+            height: 700px;
             border: 8px solid #333;
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.3);
-            background: linear-gradient(to bottom, #87CEEB 0%, #98D8E8 30%, #B0E0E6 60%);
-        }
-        
-        .pixel-art {
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: linear-gradient(to bottom,
+                #87CEEB 0%,
+                #87CEEB 40%,
+                #B0E0E6 100%
+            );
         }
 
-        /* Mountains */
+        /* Enhanced Blossom Trees */
+        .blossom-tree {
+            position: absolute;
+            bottom: 180px;
+            width: 150px;
+            height: 250px;
+            z-index: 6;
+            pointer-events: none;
+        }
+        .left-tree { left: -20px; transform: rotate(5deg); }
+        .right-tree { right: -20px; transform: rotate(-5deg); }
+        
+        .tree-trunk {
+            position: absolute;
+            left: 70px;
+            bottom: 0;
+            width: 16px;
+            height: 100px;
+            background: linear-gradient(90deg, #6B4423 0%, #8B5C2A 50%, #6B4423 100%);
+            border-radius: 6px;
+            z-index: 1;
+            transform-origin: bottom center;
+            animation: gentleSway 8s ease-in-out infinite;
+        }
+        .tree-trunk::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 20px;
+            width: 8px;
+            height: 40px;
+            background: rgba(107, 68, 35, 0.6);
+            border-radius: 4px;
+        }
+        
+        .tree-leaves, .tree-leaves2, .tree-leaves3 {
+            position: absolute;
+            left: 15px;
+            bottom: 80px;
+            width: 120px;
+            height: 100px;
+            background: radial-gradient(circle at 50% 50%, #ffb6c1 30%, #ff69b4 60%, #ff1493 90%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: gentleBreeze 6s ease-in-out infinite;
+            transform-origin: bottom center;
+            filter: drop-shadow(0 0 5px rgba(255, 182, 193, 0.3));
+        }
+        .tree-leaves2 {
+            left: 0px;
+            bottom: 120px;
+            width: 100px;
+            height: 80px;
+            opacity: 0.85;
+            animation-delay: -2s;
+        }
+        .tree-leaves3 {
+            left: 35px;
+            bottom: 150px;
+            width: 80px;
+            height: 60px;
+            opacity: 0.7;
+            animation-delay: -4s;
+        }
+        
+        .falling-leaf {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle at center, #ffb6c1 40%, #ff69b4 100%);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.9;
+            animation: leafFall 6s linear infinite;
+            box-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+            filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.3));
+        }
+        
+        .left-tree .falling-leaf:nth-child(6) { left: 20%; top: 40%; animation-delay: 0s; }
+        .left-tree .falling-leaf:nth-child(7) { left: 40%; top: 30%; animation-delay: -2s; }
+        .left-tree .falling-leaf:nth-child(8) { left: 60%; top: 50%; animation-delay: -4s; }
+        .left-tree .falling-leaf:nth-child(9) { left: 30%; top: 60%; animation-delay: -1s; }
+        .left-tree .falling-leaf:nth-child(10) { left: 50%; top: 35%; animation-delay: -3s; }
+        
+        .right-tree .falling-leaf:nth-child(6) { left: 30%; top: 45%; animation-delay: -1.5s; }
+        .right-tree .falling-leaf:nth-child(7) { left: 50%; top: 35%; animation-delay: -3.5s; }
+        .right-tree .falling-leaf:nth-child(8) { left: 70%; top: 55%; animation-delay: -5.5s; }
+        .right-tree .falling-leaf:nth-child(9) { left: 40%; top: 50%; animation-delay: -2.5s; }
+        .right-tree .falling-leaf:nth-child(10) { left: 60%; top: 40%; animation-delay: -4.5s; }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        @keyframes gentleBreeze {
+            0%, 100% { transform: scale(1) rotate(-2deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
+        }
+        @keyframes leafFall {
+            0% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.9;
+            }
+            25% { transform: translateY(50px) rotate(90deg) scale(0.95); }
+            50% { transform: translateY(100px) rotate(180deg) scale(0.9); }
+            75% { transform: translateY(150px) rotate(270deg) scale(0.85); }
+            100% { 
+                transform: translateY(280px) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Mountains */
         .mountain-back {
             position: absolute;
-            bottom: 200px;
+            bottom: 240px;
             left: 0;
             width: 100%;
             height: 300px;
             background: linear-gradient(45deg, #4A5568 0%, #2D3748 50%, #4A5568 100%);
-            clip-path: polygon(0% 100%, 20% 40%, 35% 60%, 50% 20%, 65% 50%, 80% 30%, 100% 70%, 100% 100%);
+            clip-path: polygon(0% 100%, 15% 70%, 30% 30%, 45% 60%, 60% 10%, 75% 40%, 90% 20%, 100% 80%, 100% 100%);
             z-index: 1;
         }
 
         .mountain-front {
             position: absolute;
-            bottom: 150px;
+            bottom: 190px;
             left: 0;
             width: 100%;
             height: 250px;
             background: linear-gradient(45deg, #2D3748 0%, #1A202C 50%, #2D3748 100%);
-            clip-path: polygon(0% 100%, 15% 70%, 30% 30%, 45% 60%, 60% 10%, 75% 40%, 90% 20%, 100% 80%, 100% 100%);
+            clip-path: polygon(0% 100%, 20% 80%, 35% 40%, 50% 70%, 65% 20%, 80% 50%, 95% 30%, 100% 90%, 100% 100%);
             z-index: 2;
         }
 
-        /* River */
+        /* Enhanced River with details */
         .river {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px;
-            background: linear-gradient(to right, #4682B4 0%, #5F9EA0 25%, #4682B4 50%, #5F9EA0 75%, #4682B4 100%);
-            z-index: 3;
-            animation: waterFlow 3s ease-in-out infinite;
-        }
-
-        @keyframes waterFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .river::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: repeating-linear-gradient(
-                90deg,
-                #87CEEB 0px,
-                #87CEEB 10px,
-                #B0E0E6 10px,
-                #B0E0E6 20px
+            height: 190px;
+            background: linear-gradient(to bottom,
+                #5F9EA0 0%,
+                #4682B4 30%,
+                #27496d 60%,
+                #1e3a5f 100%
             );
-            animation: ripple 2s linear infinite;
+            z-index: 3;
+            overflow: hidden;
+        }
+        
+        .river-wave {
+            position: absolute;
+            width: 120%;
+            height: 20px;
+            left: -10%;
+            background: repeating-linear-gradient(90deg, 
+                rgba(179, 224, 255, 0.3) 0px, 
+                rgba(179, 224, 255, 0.3) 15px, 
+                transparent 15px, 
+                transparent 30px
+            );
+            border-radius: 50%;
+            animation: riverWave 8s linear infinite;
+        }
+        .river-wave:nth-child(1) { top: 30px; animation-delay: 0s; }
+        .river-wave:nth-child(2) { top: 60px; animation-delay: -2s; }
+        .river-wave:nth-child(3) { top: 90px; animation-delay: -4s; }
+        .river-wave:nth-child(4) { top: 120px; animation-delay: -6s; }
+        
+        .river-highlight {
+            position: absolute;
+            width: 100%;
+            height: 15px;
+            top: 20px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.3) 30%, 
+                rgba(255, 255, 255, 0.5) 50%, 
+                rgba(255, 255, 255, 0.3) 70%, 
+                transparent
+            );
+            border-radius: 50%;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+        
+        .river-stone {
+            position: absolute;
+            width: 25px;
+            height: 15px;
+            background: linear-gradient(45deg, #b0c4de 0%, #87ceeb 50%, #b0c4de 100%);
+            border-radius: 50% 50% 60% 40%;
+            opacity: 0.8;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .river-stone:nth-child(6) { left: 15%; top: 140px; transform: rotate(15deg); }
+        .river-stone:nth-child(7) { left: 45%; top: 155px; transform: rotate(-10deg); }
+        .river-stone:nth-child(8) { left: 75%; top: 130px; transform: rotate(25deg); }
+        .river-stone:nth-child(9) { left: 30%; top: 170px; transform: rotate(-20deg); }
+        .river-stone:nth-child(10) { left: 65%; top: 175px; transform: rotate(12deg); }
+        
+        @keyframes riverWave {
+            0% { left: -10%; opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { left: 10%; opacity: 0.3; }
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
         }
 
-        @keyframes ripple {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(20px); }
-        }
-
-        /* Ground/Grass */
+        /* Enhanced Ground with detailed grass */
         .ground {
             position: absolute;
-            bottom: 150px;
+            bottom: 190px;
             left: 0;
             width: 100%;
             height: 50px;
-            background: repeating-linear-gradient(
-                90deg,
-                #228B22 0px,
-                #228B22 8px,
-                #32CD32 8px,
-                #32CD32 16px
+            background: linear-gradient(to bottom,
+                #32CD32 0%,
+                #228B22 40%,
+                #1B691B 100%
             );
             z-index: 4;
+        }
+        
+        .grass-blade {
+            position: absolute;
+            width: 3px;
+            height: 12px;
+            background: linear-gradient(to bottom, #32CD32, #228B22);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            animation: grassWave 4s ease-in-out infinite;
+        }
+        
+        .grass-blade:nth-child(1) { left: 5%; animation-delay: 0s; }
+        .grass-blade:nth-child(2) { left: 15%; animation-delay: -0.5s; }
+        .grass-blade:nth-child(3) { left: 25%; animation-delay: -1s; }
+        .grass-blade:nth-child(4) { left: 35%; animation-delay: -1.5s; }
+        .grass-blade:nth-child(5) { left: 45%; animation-delay: -2s; }
+        .grass-blade:nth-child(6) { left: 55%; animation-delay: -2.5s; }
+        .grass-blade:nth-child(7) { left: 65%; animation-delay: -3s; }
+        .grass-blade:nth-child(8) { left: 75%; animation-delay: -3.5s; }
+        .grass-blade:nth-child(9) { left: 85%; animation-delay: -4s; }
+        .grass-blade:nth-child(10) { left: 95%; animation-delay: -4.5s; }
+        
+        .ground-flower {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffb6c1 40%, #ff69b4 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 3px rgba(255, 182, 193, 0.5);
+        }
+        .ground-flower:nth-child(11) { left: 12%; top: 35px; }
+        .ground-flower:nth-child(12) { left: 38%; top: 30px; }
+        .ground-flower:nth-child(13) { left: 62%; top: 40px; }
+        .ground-flower:nth-child(14) { left: 78%; top: 32px; }
+        .ground-flower:nth-child(15) { left: 88%; top: 38px; }
+        
+        @keyframes grassWave {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
         }
 
         /* Clouds */
@@ -181,248 +366,283 @@
             height: 20px;
         }
 
-        .cloud3 {
-            width: 100px;
-            height: 50px;
-            top: 15%;
-            left: -120px;
-            animation-duration: 35s;
-            animation-delay: -20s;
-        }
-
-        .cloud3::before {
-            top: -20px;
-            left: 15px;
-            width: 50px;
-            height: 50px;
-        }
-
-        .cloud3::after {
-            top: -15px;
-            right: 20px;
-            width: 30px;
-            height: 30px;
-        }
-
         @keyframes float {
             0% { transform: translateX(0); }
-            100% { transform: translateX(900px); }
+            100% { transform: translateX(1000px); }
         }
 
-        /* Cherry blossoms */
-        .cherry-blossom {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: #FFB6C1;
-            box-shadow: 
-                4px 0 0 #FF69B4,
-                8px 0 0 #FFB6C1,
-                0 4px 0 #FF69B4,
-                4px 4px 0 #FFC0CB;
-            animation: fall 8s infinite linear;
-            opacity: 0.9;
-            z-index: 6;
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(620px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Characters positioned on the grass */
+        /* Enhanced Characters positioned on the grass */
         .characters {
             position: absolute;
-            bottom: 200px;
+            bottom: 240px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 5;
             display: flex;
-            gap: 30px;
+            gap: 40px;
             align-items: flex-end;
         }
 
+        /* Man kneeling in proposing pose with enhanced details */
         .man {
             position: relative;
+            width: 60px;
+            height: 80px;
+            display: flex;
+            align-items: flex-end;
             animation: propose 2s ease-in-out infinite;
         }
-
-        .woman {
-            position: relative;
-            animation: gentle-sway 3s ease-in-out infinite;
-        }
-
-        @keyframes propose {
-            0%, 100% { transform: translateY(0px) rotate(-2deg); }
-            50% { transform: translateY(-5px) rotate(-5deg); }
-        }
-
-        @keyframes gentle-sway {
-            0%, 100% { transform: translateX(0px); }
-            50% { transform: translateX(3px); }
-        }
-
-        /* Enhanced pixelated character sprites */
+        
         .man-sprite {
-            width: 48px;
-            height: 64px;
-            background: 
-                /* Head */
-                radial-gradient(circle at 24px 15px, #FDBCB4 10px, transparent 10px),
-                /* Hair */
-                radial-gradient(circle at 24px 12px, #8B4513 12px, transparent 12px),
-                /* Shirt */
-                linear-gradient(to bottom, transparent 25px, #FF4500 25px, #FF4500 45px, transparent 45px),
-                /* Pants */
-                linear-gradient(to bottom, transparent 45px, #000080 45px, #000080 58px, transparent 58px),
-                /* Shoes */
-                linear-gradient(to bottom, transparent 58px, #8B4513 58px, #8B4513 64px);
-            background-size: 48px 64px;
+            width: 60px;
+            height: 75px;
+            background:
+                /* Enhanced head with facial features */
+                radial-gradient(circle at 30px 18px, #FDBCB4 12px, transparent 12px),
+                radial-gradient(circle at 27px 16px, #000000 2px, transparent 2px), /* Left eye */
+                radial-gradient(circle at 33px 16px, #000000 2px, transparent 2px), /* Right eye */
+                linear-gradient(90deg, transparent 27px, #FF1493 6px, transparent 33px), /* Smile */
+                radial-gradient(circle at 30px 20px, #FF69B4 1px, transparent 1px), /* Nose */
+                /* Enhanced hair with texture */
+                radial-gradient(circle at 30px 14px, #8B4513 14px, transparent 14px),
+                radial-gradient(circle at 25px 12px, #A0522D 5px, transparent 5px),
+                radial-gradient(circle at 35px 12px, #A0522D 5px, transparent 5px),
+                /* Detailed shirt with collar and buttons */
+                linear-gradient(to bottom, transparent 30px, #4169E1 30px, #4169E1 50px, transparent 50px),
+                linear-gradient(to right, transparent 28px, #FFFFFF 4px, transparent 32px), /* Collar */
+                radial-gradient(circle at 30px 35px, #FFD700 2px, transparent 2px), /* Button */
+                radial-gradient(circle at 30px 42px, #FFD700 2px, transparent 2px), /* Button */
+                /* Kneeling legs with shading */
+                linear-gradient(120deg, transparent 50px, #000080 50px, #000080 65px, transparent 65px), /* Left leg */
+                linear-gradient(60deg, transparent 40px, #000080 40px, #000080 55px, transparent 55px), /* Right leg */
+                /* Enhanced shoes with laces */
+                linear-gradient(to bottom, transparent 65px, #8B4513 65px, #8B4513 72px),
+                linear-gradient(45deg, transparent 65px, #A0522D 65px, #A0522D 68px, transparent 68px),
+                /* Arms with detailed positioning */
+                radial-gradient(ellipse 8px 15px at 15px 40px, #FDBCB4 100%, transparent 100%), /* Left arm */
+                radial-gradient(ellipse 8px 15px at 45px 38px, #FDBCB4 100%, transparent 100%), /* Right arm */
+                /* Hand holding ring */
+                radial-gradient(circle at 50px 40px, #FDBCB4 4px, transparent 4px);
+            background-size: 60px 75px;
             background-repeat: no-repeat;
             position: relative;
+            image-rendering: pixelated;
         }
-
-        .woman-sprite {
-            width: 48px;
-            height: 70px;
-            background: 
-                /* Head */
-                radial-gradient(circle at 24px 15px, #FDBCB4 10px, transparent 10px),
-                /* Hair */
-                radial-gradient(circle at 24px 12px, #DAA520 14px, transparent 14px),
-                /* Crown */
-                linear-gradient(to bottom, transparent 0px, #FFD700 0px, #FFD700 8px, transparent 8px),
-                /* Dress */
-                linear-gradient(to bottom, transparent 25px, #FF1493 25px, #FF69B4 35px, #FFB6C1 50px, #FF1493 70px),
-                /* Arms */
-                radial-gradient(ellipse 6px 15px at 12px 35px, #FDBCB4 0%, transparent 70%),
-                radial-gradient(ellipse 6px 15px at 36px 35px, #FDBCB4 0%, transparent 70%);
-            background-size: 48px 70px;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-
-        /* Crown and ring effects */
-        .woman-sprite::before {
-            content: '👑';
-            position: absolute;
-            top: -8px;
-            left: 16px;
-            font-size: 16px;
-            animation: crown-sparkle 2s infinite;
-        }
-
-        @keyframes crown-sparkle {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3) hue-rotate(30deg); }
-        }
-
+        
         .man-sprite::after {
             content: '💍';
             position: absolute;
-            top: 25px;
-            right: 8px;
-            font-size: 12px;
+            top: 35px;
+            right: 5px;
+            font-size: 18px;
             animation: ring-sparkle 1.5s infinite;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+        }
+
+        /* Woman in detailed princess dress */
+        .woman {
+            position: relative;
+            width: 70px;
+            height: 95px;
+            display: flex;
+            align-items: flex-end;
+            animation: gentle-sway 3s ease-in-out infinite;
+        }
+        
+        .woman-sprite {
+            width: 70px;
+            height: 90px;
+            background:
+                /* Enhanced head with beautiful features */
+                radial-gradient(circle at 35px 18px, #FDBCB4 12px, transparent 12px),
+                radial-gradient(circle at 32px 16px, #000000 2px, transparent 2px), /* Left eye */
+                radial-gradient(circle at 38px 16px, #000000 2px, transparent 2px), /* Right eye */
+                linear-gradient(90deg, transparent 32px, #FF1493 6px, transparent 38px), /* Smile */
+                radial-gradient(circle at 35px 20px, #FF69B4 1px, transparent 1px), /* Nose */
+                /* Flowing golden hair with highlights */
+                radial-gradient(circle at 35px 14px, #DAA520 16px, transparent 16px),
+                radial-gradient(ellipse 8px 20px at 20px 22px, #FFD700 100%, transparent 100%), /* Left hair flow */
+                radial-gradient(ellipse 8px 20px at 50px 22px, #FFD700 100%, transparent 100%), /* Right hair flow */
+                radial-gradient(ellipse 6px 12px at 25px 28px, #F0E68C 100%, transparent 100%), /* Hair highlight */
+                radial-gradient(ellipse 6px 12px at 45px 28px, #F0E68C 100%, transparent 100%), /* Hair highlight */
+                /* Sparkling tiara */
+                linear-gradient(to bottom, transparent 2px, #FFD700 2px, #FFD700 10px, transparent 10px),
+                radial-gradient(circle at 35px 6px, #FF69B4 3px, transparent 3px), /* Center gem */
+                radial-gradient(circle at 28px 8px, #FF1493 2px, transparent 2px), /* Left gem */
+                radial-gradient(circle at 42px 8px, #FF1493 2px, transparent 2px), /* Right gem */
+                /* Elegant dress bodice with embellishments */
+                linear-gradient(to bottom, transparent 30px, #FF1493 30px, #FF69B4 40px, transparent 40px),
+                linear-gradient(45deg, transparent 30px, #FFB6C1 3px, transparent 33px), /* Left strap */
+                linear-gradient(-45deg, transparent 30px, #FFB6C1 3px, transparent 33px), /* Right strap */
+                radial-gradient(circle at 30px 35px, #FFD700 1.5px, transparent 1.5px), /* Bodice jewel */
+                radial-gradient(circle at 40px 35px, #FFD700 1.5px, transparent 1.5px), /* Bodice jewel */
+                /* Multi-layered princess dress skirt */
+                radial-gradient(ellipse 30px 25px at 35px 70px, #FFB6C1 85%, transparent 100%), /* Outer layer */
+                radial-gradient(ellipse 32px 28px at 35px 68px, #FF69B4 70%, transparent 100%), /* Middle layer */
+                radial-gradient(ellipse 25px 18px at 35px 80px, #FF1493 90%, transparent 100%), /* Inner layer */
+                /* Dress sparkles and details */
+                radial-gradient(circle at 25px 55px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 35px 60px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 45px 58px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 28px 72px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 42px 75px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 35px 82px, #FFFFFF 2px, transparent 2px),
+                /* Enhanced arms and gloves */
+                radial-gradient(ellipse 8px 18px at 18px 42px, #FDBCB4 100%, transparent 100%), /* Left arm */
+                radial-gradient(ellipse 8px 18px at 52px 42px, #FDBCB4 100%, transparent 100%), /* Right arm */
+                radial-gradient(circle at 12px 50px, #FFFFFF 4px, transparent 4px), /* Left glove */
+                radial-gradient(circle at 58px 50px, #FFFFFF 4px, transparent 4px); /* Right glove */
+            background-size: 70px 90px;
+            background-repeat: no-repeat;
+            position: relative;
+            image-rendering: pixelated;
+        }
+        
+        .woman-sprite::before {
+            content: '👑';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 20px;
+            animation: crown-sparkle 2s infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+        }
+
+        @keyframes propose {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-8px) rotate(-3deg); }
+        }
+
+        @keyframes gentle-sway {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(4px) rotate(2deg); }
+        }
+
+        @keyframes crown-sparkle {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)) brightness(1); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)) brightness(1.3) hue-rotate(30deg); }
         }
 
         @keyframes ring-sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-            50% { transform: scale(1.3) rotate(180deg); opacity: 1; }
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)); }
+            50% { transform: scale(1.4) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)); }
         }
 
         /* Floating hearts */
         .heart {
             position: absolute;
             color: #FF69B4;
-            font-size: 20px;
+            font-size: 24px;
             animation: float-up 4s ease-out infinite;
             opacity: 0;
             z-index: 7;
         }
 
         .heart1 {
-            left: 60%;
-            bottom: 250px;
+            left: 62%;
+            bottom: 320px;
             animation-delay: 0s;
         }
 
         .heart2 {
-            left: 65%;
-            bottom: 240px;
-            animation-delay: 1s;
+            left: 68%;
+            bottom: 300px;
+            animation-delay: 1.5s;
         }
 
         .heart3 {
-            left: 55%;
-            bottom: 260px;
-            animation-delay: 2s;
+            left: 56%;
+            bottom: 340px;
+            animation-delay: 3s;
         }
 
         @keyframes float-up {
-            0% { transform: translateY(0); opacity: 0; }
-            20% { opacity: 1; }
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            20% { opacity: 1; transform: scale(1); }
             80% { opacity: 1; }
-            100% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(-120px) scale(1.2); opacity: 0; }
         }
 
-        /* Dialogue box */
+        /* Dialogue box positioned to not cover characters */
         .dialogue-box {
             position: absolute;
-            bottom: 50px;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border: 4px solid #333;
-            border-radius: 10px;
-            padding: 20px;
-            max-width: 500px;
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 600px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
             z-index: 10;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
         }
         
         .question {
-            font-size: 16px;
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 25px;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .buttons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
         }
         
         .btn {
-            padding: 15px 30px;
+            padding: 18px 35px;
             font-family: 'Press Start 2P', cursive;
-            font-size: 12px;
-            border: 3px solid #333;
-            border-radius: 8px;
+            font-size: 14px;
+            border: 4px solid #333;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s;
             text-transform: uppercase;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .btn-yes {
-            background: #90EE90;
+            background: linear-gradient(45deg, #90EE90, #98FB98);
             color: #333;
         }
         
         .btn-no {
-            background: #FFB6C1;
+            background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
             color: #333;
+            position: relative;
+            z-index: 10;
         }
         
         .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .btn:active {
             transform: scale(0.95);
+        }
+        
+        /* Floating No button */
+        .float-no-btn {
+            position: fixed !important;
+            animation: floatBtnAnim 1.2s infinite alternate cubic-bezier(0.4, 1.4, 0.6, 1);
+            z-index: 9999 !important;
+            pointer-events: auto !important;
+            touch-action: none !important;
+            will-change: transform, left, top;
+            transition: transform 0.2s ease-out !important;
+        }
+        
+        @keyframes floatBtnAnim {
+            0% { transform: translateY(0) rotate(-3deg) scale(0.95); }
+            50% { transform: translateY(-25px) rotate(8deg) scale(1.05); }
+            100% { transform: translateY(12px) rotate(-8deg) scale(0.9); }
         }
         
         /* Kiss scene */
@@ -431,28 +651,34 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FFC0CB);
+            background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FFC0CB, #FF69B4);
             justify-content: center;
             align-items: center;
             flex-direction: column;
             z-index: 20;
+            animation: sceneAppear 1s ease-in-out;
+        }
+        
+        @keyframes sceneAppear {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
         
         .heart-celebration {
             position: absolute;
             color: #FF1493;
-            font-size: 30px;
+            font-size: 35px;
             animation: celebration-float 3s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
         }
         
         @keyframes celebration-float {
-            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
-            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+            0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-30px) scale(1.3) rotate(180deg); opacity: 1; }
         }
         
         .couple-kissing {
-            font-size: 60px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             animation: pulse 1.5s infinite;
         }
         
@@ -461,16 +687,111 @@
             50% { transform: scale(1.1); }
         }
         
+        /* Kiss animation characters */
+        .kiss-characters {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: -10px;
+            animation: kissTogether 1s ease-in-out;
+            position: relative;
+        }
+        
+        .kiss-man, .kiss-woman {
+            position: relative;
+            background-repeat: no-repeat;
+            image-rendering: pixelated;
+        }
+        
+        .kiss-man {
+            width: 65px;
+            height: 80px;
+            background:
+                /* Head with loving expression */
+                radial-gradient(circle at 32px 18px, #FDBCB4 12px, transparent 12px),
+                radial-gradient(circle at 29px 16px, #000000 2px, transparent 2px),
+                radial-gradient(circle at 35px 16px, #000000 2px, transparent 2px),
+                linear-gradient(90deg, transparent 29px, #FF1493 6px, transparent 35px),
+                /* Hair */
+                radial-gradient(circle at 32px 14px, #8B4513 14px, transparent 14px),
+                radial-gradient(circle at 27px 12px, #A0522D 5px, transparent 5px),
+                radial-gradient(circle at 37px 12px, #A0522D 5px, transparent 5px),
+                /* Formal suit */
+                linear-gradient(to bottom, transparent 30px, #000000 30px, #000000 55px, transparent 55px),
+                linear-gradient(to right, transparent 30px, #FFFFFF 4px, transparent 34px),
+                radial-gradient(circle at 32px 40px, #FF1493 3px, transparent 3px),
+                /* Arms embracing */
+                radial-gradient(ellipse 12px 18px at 18px 42px, #FDBCB4 100%, transparent 100%),
+                radial-gradient(ellipse 12px 18px at 46px 42px, #FDBCB4 100%, transparent 100%),
+                /* Legs */
+                linear-gradient(to bottom, transparent 55px, #000000 0%, #000000 75px),
+                /* Shoes */
+                linear-gradient(to bottom, transparent 75px, #8B4513 0%, #8B4513 80px);
+            background-size: 65px 80px;
+            transform: rotate(-8deg) translateX(5px);
+            z-index: 1;
+        }
+
+        .kiss-woman {
+            width: 75px;
+            height: 95px;
+            background:
+                /* Head with loving expression */
+                radial-gradient(circle at 37px 18px, #FDBCB4 12px, transparent 12px),
+                radial-gradient(circle at 34px 16px, #000000 2px, transparent 2px),
+                radial-gradient(circle at 40px 16px, #000000 2px, transparent 2px),
+                linear-gradient(90deg, transparent 34px, #FF1493 6px, transparent 40px),
+                /* Flowing hair */
+                radial-gradient(circle at 37px 14px, #DAA520 16px, transparent 16px),
+                radial-gradient(ellipse 8px 20px at 22px 22px, #FFD700 100%, transparent 100%),
+                radial-gradient(ellipse 8px 20px at 52px 22px, #FFD700 100%, transparent 100%),
+                /* Wedding dress */
+                linear-gradient(to bottom, transparent 30px, #FFFFFF 30px, #FFFFFF 90px),
+                radial-gradient(ellipse 30px 35px at 37px 75px, rgba(255,255,255,0.9) 70%, transparent 100%),
+                /* Dress details and sparkles */
+                radial-gradient(circle at 27px 50px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 37px 60px, #FFFFFF 2.5px, transparent 2.5px),
+                radial-gradient(circle at 47px 55px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 30px 75px, #FFFFFF 2.5px, transparent 2.5px),
+                radial-gradient(circle at 44px 78px, #FFFFFF 2px, transparent 2px),
+                /* Arms embracing */
+                radial-gradient(ellipse 10px 18px at 20px 42px, #FDBCB4 100%, transparent 100%),
+                radial-gradient(ellipse 10px 18px at 54px 42px, #FDBCB4 100%, transparent 100%),
+                /* Veil */
+                radial-gradient(ellipse 15px 25px at 37px 8px, rgba(255,255,255,0.7) 80%, transparent 100%);
+            background-size: 75px 95px;
+            transform: rotate(8deg) translateX(-5px);
+            z-index: 2;
+        }
+        
+        .kiss-woman::before {
+            content: '👑';
+            position: absolute;
+            top: -12px;
+            left: 22px;
+            font-size: 22px;
+            animation: crown-sparkle 2s infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1));
+        }
+        
+        @keyframes kissTogether {
+            0% { transform: scale(0.8) translateY(30px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
         .final-message {
-            font-size: 18px;
+            font-size: 20px;
             color: #333;
             text-align: center;
-            background: rgba(255,255,255,0.9);
-            padding: 20px;
-            border-radius: 15px;
-            border: 3px solid #FF1493;
-            max-width: 600px;
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 20px;
+            border: 4px solid #FF1493;
+            max-width: 700px;
             line-height: 1.8;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .fireworks {
@@ -478,49 +799,92 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
+            z-index: 1;
         }
         
         .firework {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            animation: explode 2s infinite;
+            animation: explode 2.5s infinite;
         }
         
         @keyframes explode {
-            0% { transform: scale(0); opacity: 1; }
-            50% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(3); opacity: 0; }
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
+            100% { transform: scale(4) rotate(360deg); opacity: 0; }
         }
     </style>
 </head>
 <body>
-    <div class="game-container pixel-art">
+    <div class="game-container">
         <!-- Clouds -->
         <div class="cloud cloud1"></div>
         <div class="cloud cloud2"></div>
-        <div class="cloud cloud3"></div>
         
         <!-- Mountains -->
         <div class="mountain-back"></div>
         <div class="mountain-front"></div>
         
-        <!-- Ground -->
-        <div class="ground"></div>
+        <!-- Enhanced Ground with grass blades and flowers -->
+        <div class="ground">
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="grass-blade"></div>
+            <div class="ground-flower"></div>
+            <div class="ground-flower"></div>
+            <div class="ground-flower"></div>
+            <div class="ground-flower"></div>
+            <div class="ground-flower"></div>
+        </div>
+
+        <!-- Enhanced Blossom Trees with falling leaves -->
+        <div class="blossom-tree left-tree">
+            <div class="tree-trunk"></div>
+            <div class="tree-leaves"></div>
+            <div class="tree-leaves2"></div>
+            <div class="tree-leaves3"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+        </div>
+        <div class="blossom-tree right-tree">
+            <div class="tree-trunk"></div>
+            <div class="tree-leaves"></div>
+            <div class="tree-leaves2"></div>
+            <div class="tree-leaves3"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+            <div class="falling-leaf"></div>
+        </div>
         
-        <!-- River -->
-        <div class="river"></div>
+        <!-- Enhanced River with waves, highlights and stones -->
+        <div class="river">
+            <div class="river-wave"></div>
+            <div class="river-wave"></div>
+            <div class="river-wave"></div>
+            <div class="river-wave"></div>
+            <div class="river-highlight"></div>
+            <div class="river-stone"></div>
+            <div class="river-stone"></div>
+            <div class="river-stone"></div>
+            <div class="river-stone"></div>
+            <div class="river-stone"></div>
+        </div>
         
-        <!-- Falling cherry blossoms -->
-        <div class="cherry-blossom" style="left: 10%; animation-delay: 0s;"></div>
-        <div class="cherry-blossom" style="left: 25%; animation-delay: 1s;"></div>
-        <div class="cherry-blossom" style="left: 40%; animation-delay: 2s;"></div>
-        <div class="cherry-blossom" style="left: 55%; animation-delay: 3s;"></div>
-        <div class="cherry-blossom" style="left: 70%; animation-delay: 1.5s;"></div>
-        <div class="cherry-blossom" style="left: 85%; animation-delay: 2.5s;"></div>
-        
-        <!-- Characters -->
+        <!-- Enhanced Characters -->
         <div class="characters">
             <div class="man">
                 <div class="man-sprite"></div>
@@ -535,7 +899,7 @@
         <div class="heart heart2">💕</div>
         <div class="heart heart3">💗</div>
         
-        <!-- Main dialogue -->
+        <!-- Main dialogue positioned above characters -->
         <div class="dialogue-box" id="dialogueBox">
             <div class="question">
                 💕 Will you be my girlfriend? 💕
@@ -550,21 +914,29 @@
         <div class="kiss-scene" id="kissScene">
             <div class="fireworks"></div>
             
-            <!-- Floating hearts -->
-            <div class="heart-celebration" style="top: 10%; left: 10%; animation-delay: 0s;">💖</div>
-            <div class="heart-celebration" style="top: 20%; right: 15%; animation-delay: 0.5s;">💕</div>
-            <div class="heart-celebration" style="top: 30%; left: 20%; animation-delay: 1s;">💗</div>
-            <div class="heart-celebration" style="top: 15%; right: 25%; animation-delay: 1.5s;">💝</div>
-            <div class="heart-celebration" style="top: 25%; left: 80%; animation-delay: 2s;">💖</div>
-            <div class="heart-celebration" style="top: 35%; right: 70%; animation-delay: 0.3s;">💕</div>
+            <!-- Floating celebration hearts -->
+            <div class="heart-celebration" style="top: 8%; left: 8%; animation-delay: 0s;">💖</div>
+            <div class="heart-celebration" style="top: 15%; right: 12%; animation-delay: 0.5s;">💕</div>
+            <div class="heart-celebration" style="top: 25%; left: 15%; animation-delay: 1s;">💗</div>
+            <div class="heart-celebration" style="top: 12%; right: 20%; animation-delay: 1.5s;">💝</div>
+            <div class="heart-celebration" style="top: 20%; left: 75%; animation-delay: 2s;">💖</div>
+            <div class="heart-celebration" style="top: 30%; right: 65%; animation-delay: 0.3s;">💕</div>
+            <div class="heart-celebration" style="top: 5%; left: 50%; animation-delay: 1.2s;">💗</div>
+            <div class="heart-celebration" style="top: 35%; right: 45%; animation-delay: 0.8s;">💝</div>
             
-            <div class="couple-kissing">👨‍❤️‍💋‍👩</div>
+            <div class="couple-kissing">
+                <div class="kiss-characters">
+                    <div class="kiss-man"></div>
+                    <div class="kiss-woman"></div>
+                </div>
+            </div>
             
             <div class="final-message">
                 🎉 Yay! We're officially together! 🎉<br><br>
                 💕 Thank you for saying yes! 💕<br><br>
                 Now we can create beautiful memories together!<br>
-                I love you so much! 💖✨
+                I love you so much! 💖✨<br><br>
+                🌸 Forever and always! 🌸
             </div>
         </div>
     </div>
@@ -597,37 +969,46 @@
                     "💕 I promise I'll be the best boyfriend! Will you be my girlfriend? 💕",
                     "💕 Last chance before I only give you one option! Will you be my girlfriend? 💕"
                 ];
-                
                 document.querySelector('.question').innerHTML = rejectionMessages[rejectCount - 1];
-                
                 // Make the "No" button smaller and more hidden each time
                 const noBtn = document.getElementById('noBtn');
                 noBtn.style.transform = `scale(${1 - (rejectCount * 0.15)})`;
                 noBtn.style.opacity = `${1 - (rejectCount * 0.15)}`;
+                // After 3 rejections, make the button float away on hover/tap
+                if (rejectCount >= 3) {
+                    noBtn.classList.add('float-no-btn');
+                }
             }
         }
         
         function acceptProposal() {
-            // Hide dialogue box
-            document.getElementById('dialogueBox').style.display = 'none';
-            
-            // Show kiss scene
-            const kissScene = document.getElementById('kissScene');
-            kissScene.style.display = 'flex';
-            
-            // Add fireworks effect
-            createFireworks();
-            
-            // Play celebration animation
+            // Hide dialogue box with fade effect
+            const dialogueBox = document.getElementById('dialogueBox');
+            dialogueBox.style.transition = 'opacity 0.5s ease-out';
+            dialogueBox.style.opacity = '0';
             setTimeout(() => {
-                document.querySelector('.couple-kissing').style.animation = 'pulse 0.5s infinite';
+                dialogueBox.style.display = 'none';
             }, 500);
+            
+            // Show kiss scene with delay
+            setTimeout(() => {
+                const kissScene = document.getElementById('kissScene');
+                kissScene.style.display = 'flex';
+                
+                // Add fireworks effect
+                createFireworks();
+                
+                // Play celebration animation
+                setTimeout(() => {
+                    document.querySelector('.couple-kissing').style.animation = 'pulse 0.8s infinite';
+                }, 800);
+            }, 600);
         }
         
         function createFireworks() {
             const fireworksContainer = document.querySelector('.fireworks');
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const firework = document.createElement('div');
                     firework.className = 'firework';
@@ -643,31 +1024,103 @@
                         if (firework.parentNode) {
                             firework.parentNode.removeChild(firework);
                         }
-                    }, 2000);
-                }, i * 100);
+                    }, 2500);
+                }, i * 80);
             }
         }
         
         function getRandomColor() {
-            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#98FB98', '#DDA0DD', '#FF1493', '#00FF7F'];
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#98FB98', '#DDA0DD', '#FF1493', '#00FF7F', '#FF4500', '#9370DB'];
             return colors[Math.floor(Math.random() * colors.length)];
         }
         
-        // Make the "No" button run away on hover after a few rejections
+        // Enhanced "No" button floating behavior
         document.addEventListener('DOMContentLoaded', function() {
             const noBtn = document.getElementById('noBtn');
+            let isFloating = false;
             
-            noBtn.addEventListener('mouseenter', function() {
-                if (rejectCount >= 3) {
-                    const randomX = Math.random() * 200 - 100;
-                    const randomY = Math.random() * 100 - 50;
-                    this.style.transform += ` translate(${randomX}px, ${randomY}px)`;
-                    
-                    setTimeout(() => {
-                        this.style.transform = this.style.transform.replace(/translate\([^)]+\)/, '');
-                    }, 1000);
+            function startAutoFloat() {
+                if (!isFloating && rejectCount >= 3) {
+                    isFloating = true;
+                    floatRandomly();
                 }
-            });
+            }
+            
+            function floatRandomly() {
+                if (!isFloating || rejectCount < 3) return;
+                
+                const gameContainer = document.querySelector('.game-container');
+                const containerRect = gameContainer.getBoundingClientRect();
+                const btnRect = noBtn.getBoundingClientRect();
+                
+                // Make button float within the game container
+                const padding = 20;
+                const maxX = containerRect.width - btnRect.width - padding;
+                const maxY = containerRect.height - btnRect.height - padding;
+                
+                const newX = Math.random() * maxX + padding;
+                const newY = Math.random() * maxY + padding;
+                
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = (containerRect.left + newX) + 'px';
+                noBtn.style.top = (containerRect.top + newY) + 'px';
+                noBtn.style.transition = 'left 0.4s ease-out, top 0.4s ease-out';
+                
+                // Schedule next random movement
+                const delay = Math.random() * 1000 + 600;
+                setTimeout(floatRandomly, delay);
+            }
+            
+            function dodgeInteraction(e) {
+                if (rejectCount >= 3) {
+                    e.preventDefault();
+                    const gameContainer = document.querySelector('.game-container');
+                    const containerRect = gameContainer.getBoundingClientRect();
+                    const btnRect = noBtn.getBoundingClientRect();
+                    
+                    // Get interaction position (mouse or touch)
+                    let interactionX, interactionY;
+                    if (e.type.includes('touch')) {
+                        const touch = e.touches[0] || e.changedTouches[0];
+                        interactionX = touch.clientX;
+                        interactionY = touch.clientY;
+                    } else {
+                        interactionX = e.clientX;
+                        interactionY = e.clientY;
+                    }
+                    
+                    // Calculate button center
+                    const btnCenterX = btnRect.left + btnRect.width / 2;
+                    const btnCenterY = btnRect.top + btnRect.height / 2;
+                    
+                    // Move in opposite direction
+                    const angle = Math.atan2(interactionY - btnCenterY, interactionX - btnCenterX);
+                    const distance = 150;
+                    let newX = btnRect.left - Math.cos(angle) * distance;
+                    let newY = btnRect.top - Math.sin(angle) * distance;
+                    
+                    // Keep button within game container bounds
+                    newX = Math.max(containerRect.left + 20, Math.min(newX, containerRect.right - btnRect.width - 20));
+                    newY = Math.max(containerRect.top + 20, Math.min(newY, containerRect.bottom - btnRect.height - 20));
+                    
+                    noBtn.style.left = newX + 'px';
+                    noBtn.style.top = newY + 'px';
+                    noBtn.style.transition = 'left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                }
+            }
+            
+            // Event listeners for floating behavior
+            noBtn.addEventListener('mouseenter', startAutoFloat);
+            noBtn.addEventListener('mouseover', dodgeInteraction);
+            noBtn.addEventListener('touchstart', dodgeInteraction, { passive: false });
+            noBtn.addEventListener('touchmove', dodgeInteraction, { passive: false });
+            
+            // Prevent default touch behaviors when floating
+            document.addEventListener('touchend', function(e) {
+                if (rejectCount >= 3) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
         });
     </script>
 </body>
