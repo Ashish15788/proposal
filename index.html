@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My GF? 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            width: 800px;
+            height: 600px;
+            background: #87CEEB;
+            border: 8px solid #333;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+        
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 70%, #90EE90 100%);
+        }
+        
+        .cherry-blossom {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FFB6C1;
+            border-radius: 50% 0 50% 0;
+            animation: fall 8s infinite linear;
+            opacity: 0.8;
+        }
+        
+        @keyframes fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(620px) rotate(360deg); opacity: 0; }
+        }
+        
+        .mountain {
+            position: absolute;
+            bottom: 150px;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 150px solid #8B4513;
+        }
+        
+        .mountain1 { left: 50px; }
+        .mountain2 { right: 50px; border-bottom-color: #A0522D; }
+        
+        .character {
+            position: absolute;
+            bottom: 150px;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        
+        .boy {
+            left: 250px;
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(to bottom, 
+                #FFE4B5 0%, #FFE4B5 25%,
+                #FF6347 25%, #FF6347 50%,
+                #4169E1 50%, #4169E1 75%,
+                #8B4513 75%, #8B4513 100%);
+            border: 2px solid #333;
+            animation: bounce 2s infinite ease-in-out;
+        }
+        
+        .girl {
+            right: 250px;
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(to bottom, 
+                #FFE4B5 0%, #FFE4B5 25%,
+                #FF1493 25%, #FF1493 50%,
+                #9370DB 50%, #9370DB 75%,
+                #8B4513 75%, #8B4513 100%);
+            border: 2px solid #333;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .dialogue-box {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 4px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        
+        .question {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        
+        .btn-yes {
+            background: #90EE90;
+            color: #333;
+        }
+        
+        .btn-no {
+            background: #FFB6C1;
+            color: #333;
+        }
+        
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        .kiss-scene {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FFC0CB);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #FF1493;
+            font-size: 30px;
+            animation: float 3s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.7; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+        }
+        
+        .couple-kissing {
+            font-size: 60px;
+            margin-bottom: 30px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .final-message {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #FF1493;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+        
+        .reject-counter {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #333;
+            font-size: 10px;
+        }
+        
+        .fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FFD700;
+            border-radius: 50%;
+            animation: explode 2s infinite;
+        }
+        
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="background"></div>
+        
+        <!-- Falling cherry blossoms -->
+        <div class="cherry-blossom" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="cherry-blossom" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="cherry-blossom" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="cherry-blossom" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="cherry-blossom" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="cherry-blossom" style="left: 60%; animation-delay: 1.5s;"></div>
+        <div class="cherry-blossom" style="left: 70%; animation-delay: 2.5s;"></div>
+        <div class="cherry-blossom" style="left: 80%; animation-delay: 3.5s;"></div>
+        <div class="cherry-blossom" style="left: 90%; animation-delay: 0.5s;"></div>
+        
+        <!-- Mountains -->
+        <div class="mountain mountain1"></div>
+        <div class="mountain mountain2"></div>
+        
+        <!-- Characters -->
+        <div class="character boy"></div>
+        <div class="character girl"></div>
+        
+        <!-- Reject counter -->
+        <div class="reject-counter">
+            Rejections: <span id="rejectCount">0</span>/5
+        </div>
+        
+        <!-- Main dialogue -->
+        <div class="dialogue-box" id="dialogueBox">
+            <div class="question">
+                💕 Will you be my girlfriend? 💕
+            </div>
+            <div class="buttons">
+                <button class="btn btn-yes" onclick="acceptProposal()">Yes! 💖</button>
+                <button class="btn btn-no" id="noBtn" onclick="rejectProposal()">No 💔</button>
+            </div>
+        </div>
+        
+        <!-- Kiss scene -->
+        <div class="kiss-scene" id="kissScene">
+            <div class="fireworks"></div>
+            
+            <!-- Floating hearts -->
+            <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;">💖</div>
+            <div class="heart" style="top: 20%; right: 15%; animation-delay: 0.5s;">💕</div>
+            <div class="heart" style="top: 30%; left: 20%; animation-delay: 1s;">💗</div>
+            <div class="heart" style="top: 15%; right: 25%; animation-delay: 1.5s;">💝</div>
+            <div class="heart" style="top: 25%; left: 80%; animation-delay: 2s;">💖</div>
+            <div class="heart" style="top: 35%; right: 70%; animation-delay: 0.3s;">💕</div>
+            
+            <div class="couple-kissing">👨‍❤️‍💋‍👩</div>
+            
+            <div class="final-message">
+                🎉 Yay! We're officially together! 🎉<br><br>
+                💕 Thank you for saying yes! 💕<br><br>
+                Now we can create beautiful memories together!<br>
+                I love you so much! 💖✨
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let rejectCount = 0;
+        const maxRejects = 5;
+        
+        function rejectProposal() {
+            rejectCount++;
+            document.getElementById('rejectCount').textContent = rejectCount;
+            
+            if (rejectCount >= maxRejects) {
+                // Remove the "No" button after 5 rejections
+                const dialogueBox = document.getElementById('dialogueBox');
+                dialogueBox.innerHTML = `
+                    <div class="question">
+                        💕 Okay, okay... I get it. But I really love you! 💕<br>
+                        Will you PLEASE be my girlfriend? 🥺
+                    </div>
+                    <div class="buttons">
+                        <button class="btn btn-yes" onclick="acceptProposal()">Yes! 💖</button>
+                    </div>
+                `;
+            } else {
+                // Show different messages for each rejection
+                const rejectionMessages = [
+                    "💕 Are you sure? Will you be my girlfriend? 💕",
+                    "💕 Come on, just say yes! Will you be my girlfriend? 💕", 
+                    "💕 Please? Pretty please? Will you be my girlfriend? 💕",
+                    "💕 I promise I'll be the best boyfriend! Will you be my girlfriend? 💕",
+                    "💕 Last chance before I only give you one option! Will you be my girlfriend? 💕"
+                ];
+                
+                document.querySelector('.question').innerHTML = rejectionMessages[rejectCount - 1];
+                
+                // Make the "No" button smaller and more hidden each time
+                const noBtn = document.getElementById('noBtn');
+                noBtn.style.transform = `scale(${1 - (rejectCount * 0.15)})`;
+                noBtn.style.opacity = `${1 - (rejectCount * 0.15)}`;
+            }
+        }
+        
+        function acceptProposal() {
+            // Hide dialogue box
+            document.getElementById('dialogueBox').style.display = 'none';
+            
+            // Show kiss scene
+            const kissScene = document.getElementById('kissScene');
+            kissScene.style.display = 'flex';
+            
+            // Add fireworks effect
+            createFireworks();
+            
+            // Play celebration animation
+            setTimeout(() => {
+                document.querySelector('.couple-kissing').style.animation = 'pulse 0.5s infinite';
+            }, 500);
+        }
+        
+        function createFireworks() {
+            const fireworksContainer = document.querySelector('.fireworks');
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.top = Math.random() * 100 + '%';
+                    firework.style.background = getRandomColor();
+                    firework.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    fireworksContainer.appendChild(firework);
+                    
+                    // Remove firework after animation
+                    setTimeout(() => {
+                        if (firework.parentNode) {
+                            firework.parentNode.removeChild(firework);
+                        }
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+        
+        function getRandomColor() {
+            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#98FB98', '#DDA0DD'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Add some interactive sound effects (optional)
+        function playSound(type) {
+            // You can add sound effects here if needed
+            console.log(`Playing ${type} sound`);
+        }
+        
+        // Make the "No" button run away on hover after a few rejections
+        document.addEventListener('DOMContentLoaded', function() {
+            const noBtn = document.getElementById('noBtn');
+            
+            noBtn.addEventListener('mouseenter', function() {
+                if (rejectCount >= 3) {
+                    const randomX = Math.random() * 200 - 100;
+                    const randomY = Math.random() * 100 - 50;
+                    this.style.transform += ` translate(${randomX}px, ${randomY}px)`;
+                    
+                    setTimeout(() => {
+                        this.style.transform = this.style.transform.replace(/translate\([^)]+\)/, '');
+                    }, 1000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
