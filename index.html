@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My GF? 💕</title>
+    <title>We're Together Now! 💕</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         
@@ -371,163 +371,6 @@
             100% { transform: translateX(1000px); }
         }
 
-        /* Enhanced Characters positioned on the grass */
-        .characters {
-            position: absolute;
-            bottom: 240px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            display: flex;
-            gap: 40px;
-            align-items: flex-end;
-        }
-
-        /* Man kneeling in proposing pose with enhanced details */
-        .man {
-            position: relative;
-            width: 60px;
-            height: 80px;
-            display: flex;
-            align-items: flex-end;
-            animation: propose 2s ease-in-out infinite;
-        }
-        
-        .man-sprite {
-            width: 60px;
-            height: 75px;
-            background:
-                /* Enhanced head with facial features */
-                radial-gradient(circle at 30px 18px, #FDBCB4 12px, transparent 12px),
-                radial-gradient(circle at 27px 16px, #000000 2px, transparent 2px), /* Left eye */
-                radial-gradient(circle at 33px 16px, #000000 2px, transparent 2px), /* Right eye */
-                linear-gradient(90deg, transparent 27px, #FF1493 6px, transparent 33px), /* Smile */
-                radial-gradient(circle at 30px 20px, #FF69B4 1px, transparent 1px), /* Nose */
-                /* Enhanced hair with texture */
-                radial-gradient(circle at 30px 14px, #8B4513 14px, transparent 14px),
-                radial-gradient(circle at 25px 12px, #A0522D 5px, transparent 5px),
-                radial-gradient(circle at 35px 12px, #A0522D 5px, transparent 5px),
-                /* Detailed shirt with collar and buttons */
-                linear-gradient(to bottom, transparent 30px, #4169E1 30px, #4169E1 50px, transparent 50px),
-                linear-gradient(to right, transparent 28px, #FFFFFF 4px, transparent 32px), /* Collar */
-                radial-gradient(circle at 30px 35px, #FFD700 2px, transparent 2px), /* Button */
-                radial-gradient(circle at 30px 42px, #FFD700 2px, transparent 2px), /* Button */
-                /* Kneeling legs with shading */
-                linear-gradient(120deg, transparent 50px, #000080 50px, #000080 65px, transparent 65px), /* Left leg */
-                linear-gradient(60deg, transparent 40px, #000080 40px, #000080 55px, transparent 55px), /* Right leg */
-                /* Enhanced shoes with laces */
-                linear-gradient(to bottom, transparent 65px, #8B4513 65px, #8B4513 72px),
-                linear-gradient(45deg, transparent 65px, #A0522D 65px, #A0522D 68px, transparent 68px),
-                /* Arms with detailed positioning */
-                radial-gradient(ellipse 8px 15px at 15px 40px, #FDBCB4 100%, transparent 100%), /* Left arm */
-                radial-gradient(ellipse 8px 15px at 45px 38px, #FDBCB4 100%, transparent 100%), /* Right arm */
-                /* Hand holding ring */
-                radial-gradient(circle at 50px 40px, #FDBCB4 4px, transparent 4px);
-            background-size: 60px 75px;
-            background-repeat: no-repeat;
-            position: relative;
-            image-rendering: pixelated;
-        }
-        
-        .man-sprite::after {
-            content: '💍';
-            position: absolute;
-            top: 35px;
-            right: 5px;
-            font-size: 18px;
-            animation: ring-sparkle 1.5s infinite;
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
-        }
-
-        /* Woman in detailed princess dress */
-        .woman {
-            position: relative;
-            width: 70px;
-            height: 95px;
-            display: flex;
-            align-items: flex-end;
-            animation: gentle-sway 3s ease-in-out infinite;
-        }
-        
-        .woman-sprite {
-            width: 70px;
-            height: 90px;
-            background:
-                /* Enhanced head with beautiful features */
-                radial-gradient(circle at 35px 18px, #FDBCB4 12px, transparent 12px),
-                radial-gradient(circle at 32px 16px, #000000 2px, transparent 2px), /* Left eye */
-                radial-gradient(circle at 38px 16px, #000000 2px, transparent 2px), /* Right eye */
-                linear-gradient(90deg, transparent 32px, #FF1493 6px, transparent 38px), /* Smile */
-                radial-gradient(circle at 35px 20px, #FF69B4 1px, transparent 1px), /* Nose */
-                /* Flowing golden hair with highlights */
-                radial-gradient(circle at 35px 14px, #DAA520 16px, transparent 16px),
-                radial-gradient(ellipse 8px 20px at 20px 22px, #FFD700 100%, transparent 100%), /* Left hair flow */
-                radial-gradient(ellipse 8px 20px at 50px 22px, #FFD700 100%, transparent 100%), /* Right hair flow */
-                radial-gradient(ellipse 6px 12px at 25px 28px, #F0E68C 100%, transparent 100%), /* Hair highlight */
-                radial-gradient(ellipse 6px 12px at 45px 28px, #F0E68C 100%, transparent 100%), /* Hair highlight */
-                /* Sparkling tiara */
-                linear-gradient(to bottom, transparent 2px, #FFD700 2px, #FFD700 10px, transparent 10px),
-                radial-gradient(circle at 35px 6px, #FF69B4 3px, transparent 3px), /* Center gem */
-                radial-gradient(circle at 28px 8px, #FF1493 2px, transparent 2px), /* Left gem */
-                radial-gradient(circle at 42px 8px, #FF1493 2px, transparent 2px), /* Right gem */
-                /* Elegant dress bodice with embellishments */
-                linear-gradient(to bottom, transparent 30px, #FF1493 30px, #FF69B4 40px, transparent 40px),
-                linear-gradient(45deg, transparent 30px, #FFB6C1 3px, transparent 33px), /* Left strap */
-                linear-gradient(-45deg, transparent 30px, #FFB6C1 3px, transparent 33px), /* Right strap */
-                radial-gradient(circle at 30px 35px, #FFD700 1.5px, transparent 1.5px), /* Bodice jewel */
-                radial-gradient(circle at 40px 35px, #FFD700 1.5px, transparent 1.5px), /* Bodice jewel */
-                /* Multi-layered princess dress skirt */
-                radial-gradient(ellipse 30px 25px at 35px 70px, #FFB6C1 85%, transparent 100%), /* Outer layer */
-                radial-gradient(ellipse 32px 28px at 35px 68px, #FF69B4 70%, transparent 100%), /* Middle layer */
-                radial-gradient(ellipse 25px 18px at 35px 80px, #FF1493 90%, transparent 100%), /* Inner layer */
-                /* Dress sparkles and details */
-                radial-gradient(circle at 25px 55px, #FFFFFF 1.5px, transparent 1.5px),
-                radial-gradient(circle at 35px 60px, #FFFFFF 2px, transparent 2px),
-                radial-gradient(circle at 45px 58px, #FFFFFF 1.5px, transparent 1.5px),
-                radial-gradient(circle at 28px 72px, #FFFFFF 2px, transparent 2px),
-                radial-gradient(circle at 42px 75px, #FFFFFF 1.5px, transparent 1.5px),
-                radial-gradient(circle at 35px 82px, #FFFFFF 2px, transparent 2px),
-                /* Enhanced arms and gloves */
-                radial-gradient(ellipse 8px 18px at 18px 42px, #FDBCB4 100%, transparent 100%), /* Left arm */
-                radial-gradient(ellipse 8px 18px at 52px 42px, #FDBCB4 100%, transparent 100%), /* Right arm */
-                radial-gradient(circle at 12px 50px, #FFFFFF 4px, transparent 4px), /* Left glove */
-                radial-gradient(circle at 58px 50px, #FFFFFF 4px, transparent 4px); /* Right glove */
-            background-size: 70px 90px;
-            background-repeat: no-repeat;
-            position: relative;
-            image-rendering: pixelated;
-        }
-        
-        .woman-sprite::before {
-            content: '👑';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            font-size: 20px;
-            animation: crown-sparkle 2s infinite;
-            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
-        }
-
-        @keyframes propose {
-            0%, 100% { transform: translateY(0px) rotate(-1deg); }
-            50% { transform: translateY(-8px) rotate(-3deg); }
-        }
-
-        @keyframes gentle-sway {
-            0%, 100% { transform: translateX(0px) rotate(0deg); }
-            50% { transform: translateX(4px) rotate(2deg); }
-        }
-
-        @keyframes crown-sparkle {
-            0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)) brightness(1); }
-            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)) brightness(1.3) hue-rotate(30deg); }
-        }
-
-        @keyframes ring-sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.9; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)); }
-            50% { transform: scale(1.4) rotate(180deg); opacity: 1; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)); }
-        }
-
         /* Floating hearts */
         .heart {
             position: absolute;
@@ -562,96 +405,14 @@
             80% { opacity: 1; }
             100% { transform: translateY(-120px) scale(1.2); opacity: 0; }
         }
-
-        /* Dialogue box positioned to not cover characters */
-        .dialogue-box {
-            position: absolute;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            border: 4px solid #333;
-            border-radius: 20px;
-            padding: 25px;
-            max-width: 600px;
-            text-align: center;
-            z-index: 10;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            backdrop-filter: blur(5px);
-        }
         
-        .question {
-            font-size: 18px;
-            margin-bottom: 25px;
-            color: #333;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-        
-        .buttons {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-        }
-        
-        .btn {
-            padding: 18px 35px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 14px;
-            border: 4px solid #333;
-            border-radius: 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .btn-yes {
-            background: linear-gradient(45deg, #90EE90, #98FB98);
-            color: #333;
-        }
-        
-        .btn-no {
-            background: linear-gradient(45deg, #FFB6C1, #FFC0CB);
-            color: #333;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .btn:hover {
-            transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        
-        .btn:active {
-            transform: scale(0.95);
-        }
-        
-        /* Floating No button */
-        .float-no-btn {
-            position: fixed !important;
-            animation: floatBtnAnim 1.2s infinite alternate cubic-bezier(0.4, 1.4, 0.6, 1);
-            z-index: 9999 !important;
-            pointer-events: auto !important;
-            touch-action: none !important;
-            will-change: transform, left, top;
-            transition: transform 0.2s ease-out !important;
-        }
-        
-        @keyframes floatBtnAnim {
-            0% { transform: translateY(0) rotate(-3deg) scale(0.95); }
-            50% { transform: translateY(-25px) rotate(8deg) scale(1.05); }
-            100% { transform: translateY(12px) rotate(-8deg) scale(0.9); }
-        }
-        
-        /* Kiss scene */
-        .kiss-scene {
-            display: none;
+        /* Together scene - Always visible */
+        .together-scene {
             position: absolute;
             width: 100%;
             height: 100%;
             background: linear-gradient(45deg, #FF69B4, #FFB6C1, #FFC0CB, #FF69B4);
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -677,7 +438,7 @@
             50% { transform: translateY(-30px) scale(1.3) rotate(180deg); opacity: 1; }
         }
         
-        .couple-kissing {
+        .couple-together {
             margin-bottom: 40px;
             animation: pulse 1.5s infinite;
         }
@@ -687,100 +448,129 @@
             50% { transform: scale(1.1); }
         }
         
-        /* Kiss animation characters */
-        .kiss-characters {
+        /* Happy couple holding hands */
+        .happy-characters {
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: -10px;
-            animation: kissTogether 1s ease-in-out;
+            gap: 15px;
+            animation: happyTogether 2s ease-in-out infinite;
             position: relative;
         }
         
-        .kiss-man, .kiss-woman {
+        @keyframes happyTogether {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.05); }
+        }
+        
+        .happy-man, .happy-woman {
             position: relative;
             background-repeat: no-repeat;
             image-rendering: pixelated;
         }
         
-        .kiss-man {
+        .happy-man {
             width: 65px;
-            height: 80px;
+            height: 85px;
             background:
-                /* Head with loving expression */
+                /* Head with big smile */
                 radial-gradient(circle at 32px 18px, #FDBCB4 12px, transparent 12px),
                 radial-gradient(circle at 29px 16px, #000000 2px, transparent 2px),
                 radial-gradient(circle at 35px 16px, #000000 2px, transparent 2px),
-                linear-gradient(90deg, transparent 29px, #FF1493 6px, transparent 35px),
+                linear-gradient(90deg, transparent 27px, #FF1493 10px, transparent 37px),
+                /* Happy blush */
+                radial-gradient(circle at 25px 20px, rgba(255, 105, 180, 0.3) 3px, transparent 3px),
+                radial-gradient(circle at 39px 20px, rgba(255, 105, 180, 0.3) 3px, transparent 3px),
                 /* Hair */
                 radial-gradient(circle at 32px 14px, #8B4513 14px, transparent 14px),
                 radial-gradient(circle at 27px 12px, #A0522D 5px, transparent 5px),
                 radial-gradient(circle at 37px 12px, #A0522D 5px, transparent 5px),
-                /* Formal suit */
-                linear-gradient(to bottom, transparent 30px, #000000 30px, #000000 55px, transparent 55px),
+                /* Smart casual shirt */
+                linear-gradient(to bottom, transparent 30px, #4169E1 30px, #4169E1 55px, transparent 55px),
                 linear-gradient(to right, transparent 30px, #FFFFFF 4px, transparent 34px),
-                radial-gradient(circle at 32px 40px, #FF1493 3px, transparent 3px),
-                /* Arms embracing */
-                radial-gradient(ellipse 12px 18px at 18px 42px, #FDBCB4 100%, transparent 100%),
-                radial-gradient(ellipse 12px 18px at 46px 42px, #FDBCB4 100%, transparent 100%),
-                /* Legs */
-                linear-gradient(to bottom, transparent 55px, #000000 0%, #000000 75px),
+                radial-gradient(circle at 32px 40px, #FFD700 2px, transparent 2px),
+                /* Extended arm reaching toward girlfriend */
+                radial-gradient(ellipse 12px 20px at 18px 42px, #FDBCB4 100%, transparent 100%),
+                radial-gradient(ellipse 12px 18px at 50px 42px, #FDBCB4 100%, transparent 100%),
+                /* Legs standing proudly */
+                linear-gradient(to bottom, transparent 55px, #000080 0%, #000080 80px),
                 /* Shoes */
-                linear-gradient(to bottom, transparent 75px, #8B4513 0%, #8B4513 80px);
-            background-size: 65px 80px;
-            transform: rotate(-8deg) translateX(5px);
+                linear-gradient(to bottom, transparent 80px, #8B4513 0%, #8B4513 85px);
+            background-size: 65px 85px;
             z-index: 1;
         }
 
-        .kiss-woman {
+        .happy-woman {
             width: 75px;
             height: 95px;
             background:
-                /* Head with loving expression */
+                /* Head with joyful expression */
                 radial-gradient(circle at 37px 18px, #FDBCB4 12px, transparent 12px),
                 radial-gradient(circle at 34px 16px, #000000 2px, transparent 2px),
                 radial-gradient(circle at 40px 16px, #000000 2px, transparent 2px),
-                linear-gradient(90deg, transparent 34px, #FF1493 6px, transparent 40px),
-                /* Flowing hair */
+                linear-gradient(90deg, transparent 32px, #FF1493 10px, transparent 42px),
+                /* Happy blush */
+                radial-gradient(circle at 30px 20px, rgba(255, 105, 180, 0.3) 3px, transparent 3px),
+                radial-gradient(circle at 44px 20px, rgba(255, 105, 180, 0.3) 3px, transparent 3px),
+                /* Beautiful flowing hair */
                 radial-gradient(circle at 37px 14px, #DAA520 16px, transparent 16px),
                 radial-gradient(ellipse 8px 20px at 22px 22px, #FFD700 100%, transparent 100%),
                 radial-gradient(ellipse 8px 20px at 52px 22px, #FFD700 100%, transparent 100%),
-                /* Wedding dress */
-                linear-gradient(to bottom, transparent 30px, #FFFFFF 30px, #FFFFFF 90px),
-                radial-gradient(ellipse 30px 35px at 37px 75px, rgba(255,255,255,0.9) 70%, transparent 100%),
-                /* Dress details and sparkles */
-                radial-gradient(circle at 27px 50px, #FFFFFF 2px, transparent 2px),
-                radial-gradient(circle at 37px 60px, #FFFFFF 2.5px, transparent 2.5px),
-                radial-gradient(circle at 47px 55px, #FFFFFF 2px, transparent 2px),
-                radial-gradient(circle at 30px 75px, #FFFFFF 2.5px, transparent 2.5px),
-                radial-gradient(circle at 44px 78px, #FFFFFF 2px, transparent 2px),
-                /* Arms embracing */
+                /* Cute casual dress */
+                linear-gradient(to bottom, transparent 30px, #FF69B4 30px, #FF69B4 40px, transparent 40px),
+                linear-gradient(45deg, transparent 30px, #FFB6C1 3px, transparent 33px),
+                linear-gradient(-45deg, transparent 30px, #FFB6C1 3px, transparent 33px),
+                radial-gradient(circle at 32px 35px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 42px 35px, #FFFFFF 1.5px, transparent 1.5px),
+                /* Flowy skirt */
+                radial-gradient(ellipse 28px 25px at 37px 70px, #FFB6C1 85%, transparent 100%),
+                radial-gradient(ellipse 30px 28px at 37px 68px, #FF69B4 70%, transparent 100%),
+                /* Dress sparkles */
+                radial-gradient(circle at 27px 55px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 37px 60px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 47px 58px, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle at 30px 75px, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle at 44px 78px, #FFFFFF 1.5px, transparent 1.5px),
+                /* Extended arm reaching toward boyfriend */
                 radial-gradient(ellipse 10px 18px at 20px 42px, #FDBCB4 100%, transparent 100%),
-                radial-gradient(ellipse 10px 18px at 54px 42px, #FDBCB4 100%, transparent 100%),
-                /* Veil */
-                radial-gradient(ellipse 15px 25px at 37px 8px, rgba(255,255,255,0.7) 80%, transparent 100%);
+                radial-gradient(ellipse 10px 18px at 54px 42px, #FDBCB4 100%, transparent 100%);
             background-size: 75px 95px;
-            transform: rotate(8deg) translateX(-5px);
             z-index: 2;
         }
         
-        .kiss-woman::before {
+        .happy-woman::before {
             content: '👑';
             position: absolute;
             top: -12px;
             left: 22px;
-            font-size: 22px;
-            animation: crown-sparkle 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1));
-        }
-        
-        @keyframes kissTogether {
-            0% { transform: scale(0.8) translateY(30px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        
-        .final-message {
             font-size: 20px;
+            animation: crown-sparkle 2s infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+        }
+        
+        /* Holding hands effect */
+        .holding-hands {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: handHold 1.5s infinite;
+            z-index: 5;
+        }
+        
+        @keyframes handHold {
+            0%, 100% { transform: translateX(-50%) scale(1); filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5)); }
+            50% { transform: translateX(-50%) scale(1.2); filter: drop-shadow(0 0 15px rgba(255, 105, 180, 1)); }
+        }
+        
+        @keyframes crown-sparkle {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)) brightness(1); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1)) brightness(1.3) hue-rotate(30deg); }
+        }
+        
+        .together-message {
+            font-size: 18px;
             color: #333;
             text-align: center;
             background: rgba(255,255,255,0.95);
@@ -792,6 +582,25 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .restart-btn {
+            margin-top: 25px;
+            padding: 15px 30px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            border: 4px solid #333;
+            border-radius: 10px;
+            cursor: pointer;
+            background: linear-gradient(45deg, #98FB98, #90EE90);
+            color: #333;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .restart-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .fireworks {
@@ -814,6 +623,22 @@
             0% { transform: scale(0) rotate(0deg); opacity: 1; }
             50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
             100% { transform: scale(4) rotate(360deg); opacity: 0; }
+        }
+
+        /* Romantic atmosphere enhancement */
+        .love-atmosphere {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 15;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 105, 180, 0.1) 20%, transparent 60%);
+            animation: atmosphereGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes atmosphereGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
         }
     </style>
 </head>
@@ -884,34 +709,14 @@
             <div class="river-stone"></div>
         </div>
         
-        <!-- Enhanced Characters -->
-        <div class="characters">
-            <div class="man">
-                <div class="man-sprite"></div>
-            </div>
-            <div class="woman">
-                <div class="woman-sprite"></div>
-            </div>
-        </div>
-        
         <!-- Floating hearts -->
         <div class="heart heart1">💖</div>
         <div class="heart heart2">💕</div>
         <div class="heart heart3">💗</div>
         
-        <!-- Main dialogue positioned above characters -->
-        <div class="dialogue-box" id="dialogueBox">
-            <div class="question">
-                💕 Will you be my girlfriend? 💕
-            </div>
-            <div class="buttons">
-                <button class="btn btn-yes" onclick="acceptProposal()">Yes! 💖</button>
-                <button class="btn btn-no" id="noBtn" onclick="rejectProposal()">No 💔</button>
-            </div>
-        </div>
-        
-        <!-- Kiss scene -->
-        <div class="kiss-scene" id="kissScene">
+        <!-- We're Together Now scene -->
+        <div class="together-scene" id="togetherScene">
+            <div class="love-atmosphere"></div>
             <div class="fireworks"></div>
             
             <!-- Floating celebration hearts -->
@@ -923,92 +728,66 @@
             <div class="heart-celebration" style="top: 30%; right: 65%; animation-delay: 0.3s;">💕</div>
             <div class="heart-celebration" style="top: 5%; left: 50%; animation-delay: 1.2s;">💗</div>
             <div class="heart-celebration" style="top: 35%; right: 45%; animation-delay: 0.8s;">💝</div>
+            <div class="heart-celebration" style="top: 40%; left: 25%; animation-delay: 2.2s;">💖</div>
+            <div class="heart-celebration" style="top: 45%; right: 80%; animation-delay: 1.8s;">💕</div>
             
-            <div class="couple-kissing">
-                <div class="kiss-characters">
-                    <div class="kiss-man"></div>
-                    <div class="kiss-woman"></div>
+            <div class="couple-together">
+                <div class="happy-characters">
+                    <div class="happy-man"></div>
+                    <div class="holding-hands">💑</div>
+                    <div class="happy-woman"></div>
                 </div>
             </div>
             
-            <div class="final-message">
-                🎉 Yay! We're officially together! 🎉<br><br>
-                💕 Thank you for saying yes! 💕<br><br>
-                Now we can create beautiful memories together!<br>
-                I love you so much! 💖✨<br><br>
-                🌸 Forever and always! 🌸
+            <div class="together-message">
+                🎉 We're officially together now! 🎉<br><br>
+                💕 Thank you for saying yes to being my girlfriend! 💕<br><br>
+                I'm so excited to start this beautiful journey with you!<br>
+                Every day with you will be an adventure filled with love,<br>
+                laughter, and endless happiness! 💖✨<br><br>
+                🌸 Here's to our new beginning as a couple! 🌸<br><br>
+                I love you more than words can express! 💝
+                
+                <button class="restart-btn" onclick="restart()">
+                    💕 Celebrate Again! 💕
+                </button>
             </div>
         </div>
     </div>
     
     <script>
-        let rejectCount = 0;
-        const maxRejects = 5;
-        
-        function rejectProposal() {
-            rejectCount++;
+        // Auto-start the celebration scene
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fireworks effect immediately
+            createFireworks();
             
-            if (rejectCount >= maxRejects) {
-                // Remove the "No" button after 5 rejections
-                const dialogueBox = document.getElementById('dialogueBox');
-                dialogueBox.innerHTML = `
-                    <div class="question">
-                        💕 Okay, okay... I get it. But I really love you! 💕<br>
-                        Will you PLEASE be my girlfriend? 🥺
-                    </div>
-                    <div class="buttons">
-                        <button class="btn btn-yes" onclick="acceptProposal()">Yes! 💖</button>
-                    </div>
-                `;
-            } else {
-                // Show different messages for each rejection
-                const rejectionMessages = [
-                    "💕 Are you sure? Will you be my girlfriend? 💕",
-                    "💕 Come on, just say yes! Will you be my girlfriend? 💕", 
-                    "💕 Please? Pretty please? Will you be my girlfriend? 💕",
-                    "💕 I promise I'll be the best boyfriend! Will you be my girlfriend? 💕",
-                    "💕 Last chance before I only give you one option! Will you be my girlfriend? 💕"
-                ];
-                document.querySelector('.question').innerHTML = rejectionMessages[rejectCount - 1];
-                // Make the "No" button smaller and more hidden each time
-                const noBtn = document.getElementById('noBtn');
-                noBtn.style.transform = `scale(${1 - (rejectCount * 0.15)})`;
-                noBtn.style.opacity = `${1 - (rejectCount * 0.15)}`;
-                // After 3 rejections, make the button float away on hover/tap
-                if (rejectCount >= 3) {
-                    noBtn.classList.add('float-no-btn');
-                }
-            }
-        }
-        
-        function acceptProposal() {
-            // Hide dialogue box with fade effect
-            const dialogueBox = document.getElementById('dialogueBox');
-            dialogueBox.style.transition = 'opacity 0.5s ease-out';
-            dialogueBox.style.opacity = '0';
-            setTimeout(() => {
-                dialogueBox.style.display = 'none';
-            }, 500);
+            // Continuous fireworks every 3 seconds
+            setInterval(createFireworks, 3000);
             
-            // Show kiss scene with delay
+            // Play celebration animation
             setTimeout(() => {
-                const kissScene = document.getElementById('kissScene');
-                kissScene.style.display = 'flex';
-                
-                // Add fireworks effect
-                createFireworks();
-                
-                // Play celebration animation
-                setTimeout(() => {
-                    document.querySelector('.couple-kissing').style.animation = 'pulse 0.8s infinite';
-                }, 800);
-            }, 600);
+                document.querySelector('.couple-together').style.animation = 'pulse 0.8s infinite';
+            }, 800);
+        });
+        
+        function restart() {
+            // Create a burst of fireworks on restart
+            createFireworks();
+            createFireworks();
+            
+            // Add a fun restart animation
+            const message = document.querySelector('.together-message');
+            message.style.animation = 'pulse 0.5s ease-in-out 3';
+            
+            setTimeout(() => {
+                message.style.animation = '';
+            }, 1500);
         }
         
         function createFireworks() {
             const fireworksContainer = document.querySelector('.fireworks');
             
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const firework = document.createElement('div');
                     firework.className = 'firework';
@@ -1025,104 +804,40 @@
                             firework.parentNode.removeChild(firework);
                         }
                     }, 2500);
-                }, i * 80);
+                }, i * 60);
             }
         }
         
         function getRandomColor() {
-            const colors = ['#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#98FB98', '#DDA0DD', '#FF1493', '#00FF7F', '#FF4500', '#9370DB'];
+            const colors = [
+                '#FFD700', '#FF69B4', '#00CED1', '#FF6347', '#98FB98', 
+                '#DDA0DD', '#FF1493', '#00FF7F', '#FF4500', '#9370DB',
+                '#FFB6C1', '#FFC0CB', '#FF69B4', '#DA70D6', '#BA55D3'
+            ];
             return colors[Math.floor(Math.random() * colors.length)];
         }
         
-        // Enhanced "No" button floating behavior
-        document.addEventListener('DOMContentLoaded', function() {
-            const noBtn = document.getElementById('noBtn');
-            let isFloating = false;
+        // Add extra sparkle effects
+        setInterval(() => {
+            const sparkles = ['✨', '💫', '⭐', '🌟'];
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+            sparkle.style.position = 'absolute';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = '20px';
+            sparkle.style.animation = 'celebration-float 2s ease-out forwards';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '10';
             
-            function startAutoFloat() {
-                if (!isFloating && rejectCount >= 3) {
-                    isFloating = true;
-                    floatRandomly();
+            document.querySelector('.together-scene').appendChild(sparkle);
+            
+            setTimeout(() => {
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
                 }
-            }
-            
-            function floatRandomly() {
-                if (!isFloating || rejectCount < 3) return;
-                
-                const dialogBox = document.querySelector('.dialogue-box');
-                const dialogRect = dialogBox.getBoundingClientRect();
-                const btnRect = noBtn.getBoundingClientRect();
-                
-                // Make button float within the dialog box
-                const padding = 10;
-                const maxX = dialogRect.width - btnRect.width - padding * 2;
-                const maxY = dialogRect.height - btnRect.height - padding * 2;
-                
-                const newX = Math.random() * maxX + padding;
-                const newY = Math.random() * maxY + padding;
-                
-                noBtn.style.position = 'absolute';
-                noBtn.style.left = (containerRect.left + newX) + 'px';
-                noBtn.style.top = (containerRect.top + newY) + 'px';
-                noBtn.style.transition = 'left 0.4s ease-out, top 0.4s ease-out';
-                
-                // Schedule next random movement
-                const delay = Math.random() * 1000 + 600;
-                setTimeout(floatRandomly, delay);
-            }
-            
-            function dodgeInteraction(e) {
-                if (rejectCount >= 3) {
-                    e.preventDefault();
-                    const dialogBox = document.querySelector('.dialogue-box');
-                    const dialogRect = dialogBox.getBoundingClientRect();
-                    const btnRect = noBtn.getBoundingClientRect();
-                    
-                    // Get interaction position (mouse or touch)
-                    let interactionX, interactionY;
-                    if (e.type.includes('touch')) {
-                        const touch = e.touches[0] || e.changedTouches[0];
-                        interactionX = touch.clientX;
-                        interactionY = touch.clientY;
-                    } else {
-                        interactionX = e.clientX;
-                        interactionY = e.clientY;
-                    }
-                    
-                    // Calculate button center
-                    const btnCenterX = btnRect.left + btnRect.width / 2;
-                    const btnCenterY = btnRect.top + btnRect.height / 2;
-                    
-                    // Move in opposite direction
-                    const angle = Math.atan2(interactionY - btnCenterY, interactionX - btnCenterX);
-                    const distance = 100;
-                    let newX = btnRect.left - Math.cos(angle) * distance;
-                    let newY = btnRect.top - Math.sin(angle) * distance;
-                    
-                    // Keep button within dialog box bounds
-                    const padding = 10;
-                    newX = Math.max(dialogRect.left + padding, Math.min(newX, dialogRect.right - btnRect.width - padding));
-                    newY = Math.max(dialogRect.top + padding, Math.min(newY, dialogRect.bottom - btnRect.height - padding));
-                    
-                    noBtn.style.left = newX + 'px';
-                    noBtn.style.top = newY + 'px';
-                    noBtn.style.transition = 'left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                }
-            }
-            
-            // Event listeners for floating behavior
-            noBtn.addEventListener('mouseenter', startAutoFloat);
-            noBtn.addEventListener('mouseover', dodgeInteraction);
-            noBtn.addEventListener('touchstart', dodgeInteraction, { passive: false });
-            noBtn.addEventListener('touchmove', dodgeInteraction, { passive: false });
-            
-            // Prevent default touch behaviors when floating
-            document.addEventListener('touchend', function(e) {
-                if (rejectCount >= 3) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-        });
+            }, 2000);
+        }, 1500);
     </script>
 </body>
 </html>
